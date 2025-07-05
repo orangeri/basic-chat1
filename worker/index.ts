@@ -12,10 +12,10 @@ app.post("/api/chat", async (c) => {
     messages.unshift({ role: "system", content: payload.config.systemMessage });
   }
   const eventSourceStream = await c.env.AI.run(
-    "@cf/meta/llama-4-scout-17b-16e-instruct",
+    "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
     {
       messages,
-      max_tokens: 8000,
+      max_tokens: 16000,
       stream: true,
     }
   );
